@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 import LoginWrapper from './components/LoginWrapper';
 import LoginContainer from './components/LoginContainer';
 import LoginBox from './components/LoginBox';
 import LoginFooterLink from './components/LoginFooterLink';
+import LoginFeedback from './components/LoginFeedback';
 import Field from '../../components/Input';
 import Button from '../../components/Button';
 
@@ -21,6 +23,7 @@ const StyledForm = styled(Form)`
 
 const Login = () => {
   const navigate = useNavigate();
+  const [feedbackText, setFeedbackText] = useState<string>('');
 
   return (
     <LoginWrapper>
@@ -38,17 +41,23 @@ const Login = () => {
             })}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              fetch(`http://localhost:3001/users/${values.username}`).then((res) => {
-                console.log({res});
-                console.log(res.status, res.statusText);
-                if (res.status === 200) {
-                  navigate(URLS.HOME, {replace: true});
-                }
-              }).catch((e) => {
-                console.error(e)
-              }).finally(() => {
-                setSubmitting(false);
-              })
+              setFeedbackText('');
+              axios.get(`http://localhost:3001/users/${values.username}`)
+                .then((res) => {
+                  console.log(res.status, res.statusText);
+                  if (res.data?.id === values.username && res.data?.password === values.password) {
+                    navigate(URLS.HOME, { replace: true });
+                    return;
+                  }
+                  setFeedbackText('Incorrect credentials.');
+                })
+                .catch((e) => {
+                  console.error(e);
+                  setFeedbackText('Incorrect credentials.');
+                })
+                .finally(() => {
+                  setSubmitting(false);
+                })
             }}
           >
             {({ isSubmitting }) => (
@@ -62,6 +71,8 @@ const Login = () => {
                 <Button align='flex-end' type="submit" disabled={isSubmitting}>
                   Log in
                 </Button>
+
+                <LoginFeedback show={feedbackText.length > 0}>{feedbackText}</LoginFeedback>
               </StyledForm>
             )}
           </Formik>

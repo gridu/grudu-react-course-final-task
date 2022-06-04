@@ -8,24 +8,18 @@ import LoginWrapper from './components/LoginWrapper';
 import LoginContainer from './components/LoginContainer';
 import LoginBox from './components/LoginBox';
 import LoginFooterLink from './components/LoginFooterLink';
+import LoginFeedback from './components/LoginFeedback';
 import Field from '../../components/Input';
 import Button from '../../components/Button';
 
 import * as URLS from '../../constants/urls';
+import axios from 'axios';
 
-interface FeedbackProps {
-  show: boolean
-}
 
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const Feedback = styled.div`
-  margin-top: 1rem;
-  display: ${(props: FeedbackProps) => props.show ? 'block' : 'none'}
 `;
 
 const Signup = () => {
@@ -56,28 +50,25 @@ const Signup = () => {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               setFeedbackText('');
-              fetch(`http://localhost:3001/users`, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({...values})
-              }
-              ).then((res) => {
-                console.log(res.status, res.statusText);
-                if (res.status === 201) {
-                  setFeedbackText('User created. You are being redirected to home page.');
-                  setTimeout(() => {
-                    navigate(URLS.HOME, {replace: true});
-                  }, 3000);
-                  return;
-                }
-                setFeedbackText('Something went wrong.');
-              }).catch((e) => {
-                console.error(e)
-              }).finally(() => {
-                setSubmitting(false);
-              })
+              axios.post(`http://localhost:3001/users`, {...values})
+                .then((res) => {
+                  console.log(res.status, res.statusText);
+                  if (res.status === 201) {
+                    setFeedbackText('User created. You are being redirected to home page.');
+                    setTimeout(() => {
+                      navigate(URLS.HOME, {replace: true});
+                    }, 3000);
+                    return;
+                  }
+                  setFeedbackText('Something went wrong.');
+                })
+                .catch((e) => {
+                  console.error(e)
+                  setFeedbackText('Something went wrong.');
+                })
+                .finally(() => {
+                  setSubmitting(false);
+                });
             }}
           >
             {({ isSubmitting }) => (
@@ -98,7 +89,7 @@ const Signup = () => {
                   Sign up
                 </Button>
 
-                <Feedback show={feedbackText.length > 0}>{feedbackText}</Feedback>
+                <LoginFeedback show={feedbackText.length > 0}>{feedbackText}</LoginFeedback>
               </StyledForm>
             )}
           </Formik>
