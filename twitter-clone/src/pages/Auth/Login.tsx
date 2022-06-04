@@ -32,15 +32,14 @@ const Login = () => {
             initialValues={{ username: '', password: '' }}
             validationSchema={Yup.object({
               username: Yup.string()
-                .max(15, 'Must be 15 characters or less')
                 .required('Required'),
               password: Yup.string()
-                .max(8, 'Must be 8 characters or less')
                 .required('Required'),
             })}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               fetch(`http://localhost:3001/users/${values.username}`).then((res) => {
+                console.log({res});
                 console.log(res.status, res.statusText);
                 if (res.status === 200) {
                   navigate(URLS.HOME, {replace: true});

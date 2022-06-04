@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
@@ -13,14 +13,24 @@ import Button from '../../components/Button';
 
 import * as URLS from '../../constants/urls';
 
+interface FeedbackProps {
+  show: boolean
+}
+
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
+const Feedback = styled.div`
+  margin-top: 1rem;
+  display: ${(props: FeedbackProps) => props.show ? 'block' : 'none'}
+`;
+
 const Signup = () => {
   const navigate = useNavigate();
+  const [feedbackText, setFeedbackText] = useState<string>('');
 
   return (
     <LoginWrapper>
@@ -29,14 +39,15 @@ const Signup = () => {
           <h1>Sign Up</h1>
 
           <Formik
-            initialValues={{ email: '',  password: '', username: '', fullname: '' }}
+            initialValues={{ email: '',  password: '', id: '', name: '' }}
             validationSchema={Yup.object({
               email: Yup.string()
-                .email('Please use email format'),
-              fullname: Yup.string()
-                .min(15, 'Must be 15 characters at least')
+                .email('Please use email format')
                 .required('Required'),
-              username: Yup.string()
+              name: Yup.string()
+                .min(8, 'Must be 8 characters at least')
+                .required('Required'),
+              id: Yup.string()
                 .required('Required'),
               password: Yup.string()
                 .min(8, 'Must be 8 characters at least')
@@ -44,11 +55,24 @@ const Signup = () => {
             })}
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
-              fetch(`http://localhost:3001/users/${values.username}`).then((res) => {
+              setFeedbackText('');
+              fetch(`http://localhost:3001/users`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({...values})
+              }
+              ).then((res) => {
                 console.log(res.status, res.statusText);
-                if (res.status === 200) {
-                  navigate(URLS.HOME, {replace: true});
+                if (res.status === 201) {
+                  setFeedbackText('User created. You are being redirected to home page.');
+                  setTimeout(() => {
+                    navigate(URLS.HOME, {replace: true});
+                  }, 3000);
+                  return;
                 }
+                setFeedbackText('Something went wrong.');
               }).catch((e) => {
                 console.error(e)
               }).finally(() => {
@@ -64,15 +88,17 @@ const Signup = () => {
                 <Field type="password" name="password" placeholder='Password' />
                 <ErrorMessage name="password" component="div" />
 
-                <Field type="text" name="username" placeholder='Username'/>
-                <ErrorMessage name="username" component="div" />
+                <Field type="text" name="id" placeholder='Username'/>
+                <ErrorMessage name="id" component="div" />
 
-                <Field type="text" name="fullname" placeholder='Full name'/>
-                <ErrorMessage name="fullname" component="div" />
+                <Field type="text" name="name" placeholder='Full name'/>
+                <ErrorMessage name="name" component="div" />
 
                 <Button align='flex-end' type="submit" disabled={isSubmitting}>
                   Sign up
                 </Button>
+
+                <Feedback show={feedbackText.length > 0}>{feedbackText}</Feedback>
               </StyledForm>
             )}
           </Formik>
