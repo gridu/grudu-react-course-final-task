@@ -1,9 +1,8 @@
 import React from 'react';
 import { Routes, Route, Link } from "react-router-dom";
 import logo from './logo.svg';
-import './App.css';
 
-import Login from "./pages/Login";
+import Login from "./pages/Auth/Login";
 
 function App() {
   return (
