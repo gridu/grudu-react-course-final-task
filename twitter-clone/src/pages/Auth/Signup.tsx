@@ -11,6 +11,8 @@ import LoginFooterLink from './components/LoginFooterLink';
 import Field from '../../components/Input';
 import Button from '../../components/Button';
 
+import * as URLS from '../../constants/urls';
+
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
@@ -45,7 +47,7 @@ const Signup = () => {
               fetch(`http://localhost:3001/users/${values.username}`).then((res) => {
                 console.log(res.status, res.statusText);
                 if (res.status === 200) {
-                  navigate('/home', {replace: true});
+                  navigate(URLS.HOME, {replace: true});
                 }
               }).catch((e) => {
                 console.error(e)
@@ -78,7 +80,7 @@ const Signup = () => {
         </LoginBox>
 
         <LoginFooterLink>
-          Already have an account? <Link to="/">Log in</Link>
+          Already have an account? <Link to={URLS.LOGIN}>Log in</Link>
         </LoginFooterLink>
       </LoginContainer>
     </LoginWrapper>
