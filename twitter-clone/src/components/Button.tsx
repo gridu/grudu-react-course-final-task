@@ -12,7 +12,7 @@ const Button = styled.button`
   margin-top: 1.25rem;
   font-size: 1.75rem;
   cursor: pointer;
-  align-self: ${(props: ButtonProps) => props.align}
+  align-self: ${({align = 'flex-start'}: ButtonProps) => align}
 `;
 
 export default Button;

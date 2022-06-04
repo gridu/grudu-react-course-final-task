@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { Formik, Form, ErrorMessage } from 'formik';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import LoginWrapper from './components/LoginWrapper';
@@ -18,6 +18,8 @@ const StyledForm = styled(Form)`
 `;
 
 const Login = () => {
+  const navigate = useNavigate();
+
   return (
     <LoginWrapper>
       <LoginContainer>
@@ -35,10 +37,17 @@ const Login = () => {
                 .required('Required'),
             })}
             onSubmit={(values, { setSubmitting }) => {
-              setTimeout(() => {
-                alert(JSON.stringify(values, null, 2));
+              setSubmitting(true);
+              fetch(`http://localhost:3001/users/${values.username}`).then((res) => {
+                console.log(res.status, res.statusText);
+                if (res.status === 200) {
+                  navigate('/home', {replace: true});
+                }
+              }).catch((e) => {
+                console.error(e)
+              }).finally(() => {
                 setSubmitting(false);
-              }, 400);
+              })
             }}
           >
             {({ isSubmitting }) => (
