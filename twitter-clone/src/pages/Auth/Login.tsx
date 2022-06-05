@@ -45,7 +45,7 @@ const Login = () => {
               axios.get(`http://localhost:3001/users/${values.username}`)
                 .then((res) => {
                   console.log(res.status, res.statusText);
-                  if (res.data?.id === values.username && res.data?.password === values.password) {
+                  if (res.status === 200 && res.data?.id === values.username && res.data?.password === values.password) {
                     navigate(URLS.HOME, { replace: true });
                     return;
                   }
