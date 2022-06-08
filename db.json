@@ -14,6 +14,16 @@
       "id": "3",
       "author_id": "ameliawarner",
       "text": "Describe your relationship with JavaScript with one word."
+    },
+    {
+      "author_id": "danielrfranco",
+      "text": "asdfasdf a;lksdf aksdjf oijwefo iqejwf ;alsdjf lk;asdjf ;oiqjwef;lk as d;lfkjads ;lkfjads;lkfj adsl;kfj al;kdfj alkjdhsf lakjhdsflkjahdsfk",
+      "id": "zTCOHvN"
+    },
+    {
+      "author_id": "danielrfranco",
+      "text": "<b>example</b>",
+      "id": "jlz1OTl"
     }
   ],
   "users": [
@@ -31,6 +41,12 @@
       "id": "ameliawarner",
       "name": "Amelia Warner",
       "email": "ameliawarner@yahoo.com"
+    },
+    {
+      "email": "daniel@daniel.com",
+      "password": "asdfasdf",
+      "id": "danielrfranco",
+      "name": "Daniel Franco"
     }
   ]
 }

@@ -14,6 +14,7 @@ import Field from '../../components/Input';
 import Button from '../../components/Button';
 
 import * as URLS from '../../constants/urls';
+import { USERS_API } from '../../constants/urls';
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -42,7 +43,7 @@ const Login = () => {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               setFeedbackText('');
-              axios.get(`http://localhost:3001/users/${values.username}`)
+              axios.get(`${USERS_API}/${values.username}`)
                 .then((res) => {
                   console.log(res.status, res.statusText);
                   if (res.status === 200 && res.data?.id === values.username && res.data?.password === values.password) {

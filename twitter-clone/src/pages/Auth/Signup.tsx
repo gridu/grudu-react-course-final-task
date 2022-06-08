@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+import axios from 'axios';
 
 import LoginWrapper from './components/LoginWrapper';
 import LoginContainer from './components/LoginContainer';
@@ -13,7 +14,7 @@ import Field from '../../components/Input';
 import Button from '../../components/Button';
 
 import * as URLS from '../../constants/urls';
-import axios from 'axios';
+import { USERS_API } from '../../constants/urls';
 
 
 const StyledForm = styled(Form)`
@@ -50,7 +51,7 @@ const Signup = () => {
             onSubmit={(values, { setSubmitting }) => {
               setSubmitting(true);
               setFeedbackText('');
-              axios.post(`http://localhost:3001/users`, {...values})
+              axios.post(USERS_API, {...values})
                 .then((res) => {
                   console.log(res.status, res.statusText);
                   if (res.status === 201) {
