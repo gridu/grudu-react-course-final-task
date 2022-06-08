@@ -51,12 +51,13 @@ const Signup = () => {
                 .email('Please use email format')
                 .required('Required'),
               name: Yup.string()
-                .min(8, 'Must be 8 characters at least')
+                .max(512, 'Must be 512 characters maximum')
                 .required('Required'),
               id: Yup.string()
                 .required('Required'),
               password: Yup.string()
                 .min(8, 'Must be 8 characters at least')
+                .max(256, 'Must be 256 characters maximum')
                 .required('Required'),
             })}
             onSubmit={(values, { setSubmitting }) => {
