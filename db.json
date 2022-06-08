@@ -24,6 +24,19 @@
       "author_id": "danielrfranco",
       "text": "<b>example</b>",
       "id": "jlz1OTl"
+    },
+    {
+      "text": "Example tweet",
+      "id": "T4UozWR"
+    },
+    {
+      "text": "example",
+      "id": "n-ZiNOs"
+    },
+    {
+      "author_id": "danielrfranco",
+      "text": "example",
+      "id": "tUj0pxM"
     }
   ],
   "users": [
@@ -47,6 +60,12 @@
       "password": "asdfasdf",
       "id": "danielrfranco",
       "name": "Daniel Franco"
+    },
+    {
+      "email": "jorge@jore.com",
+      "password": "asdfasdf",
+      "id": "jorge",
+      "name": "Jorge Perez"
     }
   ]
 }

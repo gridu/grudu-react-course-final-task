@@ -28,11 +28,9 @@ const Home = () => {
       });
   }, []);
   
-  console.log({tweets})
-
   return (
     <>
-      <TopBar userFullName="John Smith"/>
+      <TopBar/>
 
       <Container>
         <TweetForm />

@@ -1,5 +1,6 @@
 import React from "react";
 import { Formik, Form, ErrorMessage } from 'formik';
+import { useSelector } from "react-redux";
 import * as Yup from 'yup';
 import axios from 'axios';
 
@@ -9,6 +10,8 @@ import Button from "../../../components/Button";
 import { TWEETS_API } from "../../../constants/urls";
 
 const TweetForm = () => {
+  const user = useSelector((state: any) => state.user);
+
   return (
     <div className="tweet-form">
       <Formik
@@ -22,7 +25,7 @@ const TweetForm = () => {
           setSubmitting(true);
 
           axios.post(TWEETS_API, {
-            author_id: 'danielrfranco',
+            author_id: user.userId,
             text: values.tweet,
           })
             .then((res) => {

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { Formik, Form, ErrorMessage } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
 
 import LoginWrapper from './components/LoginWrapper';
 import LoginContainer from './components/LoginContainer';
@@ -16,6 +17,8 @@ import Button from '../../components/Button';
 import * as URLS from '../../constants/urls';
 import { USERS_API } from '../../constants/urls';
 
+import { set } from '../../redux/user';
+
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -24,8 +27,16 @@ const StyledForm = styled(Form)`
 `;
 
 const Signup = () => {
+  const user = useSelector((state: any) => state.user);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [feedbackText, setFeedbackText] = useState<string>('');
+
+  useEffect(() => {
+    if (user.loggedIn) {
+      navigate(URLS.HOME, { replace: true });
+    }
+  });
 
   return (
     <LoginWrapper>
@@ -57,6 +68,11 @@ const Signup = () => {
                   if (res.status === 201) {
                     setFeedbackText('User created. You are being redirected to home page.');
                     setTimeout(() => {
+                      dispatch(set({
+                        fullName: values.name,
+                        userId: values.id,
+                        loggedIn: true,
+                      }));
                       navigate(URLS.HOME, {replace: true});
                     }, 3000);
                     return;

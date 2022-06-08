@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import Avatar from 'react-avatar';
+import { useSelector, useDispatch } from 'react-redux'
 
 interface TopBarProps {
   userFullName: string
@@ -24,7 +25,9 @@ const TopBarContainer = styled.div`
   }
 `;
 
-const TopBar = ({userFullName}: TopBarProps) => {
+const TopBar = () => {
+  const user = useSelector((state: any) => state.user);
+
   return (
     <TopBarWrapper>
       <TopBarContainer>
@@ -34,9 +37,9 @@ const TopBar = ({userFullName}: TopBarProps) => {
         </div>
         <div>
           <span className='username'>
-            {userFullName}
+            {user.fullName}
           </span>
-          <Avatar name={userFullName} round size='64' style={{marginLeft: '1rem'}}/>
+          <Avatar name={user.fullName} round size='64' style={{marginLeft: '1rem'}}/>
         </div>
       </TopBarContainer>
     </TopBarWrapper>
