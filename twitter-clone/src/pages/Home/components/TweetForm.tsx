@@ -23,7 +23,7 @@ const TweetForm = () => {
             .min(1, 'Write at least 1 character.')
             .max(140, 'Keep this tweet 140 characters maximum.'),
         })}
-        onSubmit={(values, { setSubmitting }) => {
+        onSubmit={(values, { setSubmitting, resetForm }) => {
           setSubmitting(true);
   
           axios.post(TWEETS_API, {
@@ -46,6 +46,7 @@ const TweetForm = () => {
             })
             .finally(() => {
               setSubmitting(false);
+              resetForm();
             })
         }}
       >
