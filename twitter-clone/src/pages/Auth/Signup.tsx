@@ -17,7 +17,7 @@ import Button from '../../components/Button';
 import * as URLS from '../../constants/urls';
 import { USERS_API } from '../../constants/urls';
 
-import { set } from '../../redux/user';
+import { setUser } from '../../redux/user';
 
 
 const StyledForm = styled(Form)`
@@ -69,7 +69,7 @@ const Signup = () => {
                   if (res.status === 201) {
                     setFeedbackText('User created. You are being redirected to home page.');
                     setTimeout(() => {
-                      dispatch(set({
+                      dispatch(setUser({
                         fullName: values.name,
                         userId: values.id,
                         loggedIn: true,

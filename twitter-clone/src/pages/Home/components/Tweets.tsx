@@ -1,18 +1,19 @@
 import React from "react";
-import styled from "@emotion/styled";
+import { useSelector } from "react-redux";
+import { TweetProps } from "./Tweet";
 
-import Tweet, { TweetProps } from "./Tweet";
+import Tweet from "./Tweet";
 
-interface TweetsProps {
-  tweets: TweetProps[];
-}
+const Tweets = () => {
+  const tweets = useSelector((state: any) => state.tweets);
 
-const Tweets = ({tweets = []}: TweetsProps) => (
-  <div className="tweets-container" style={{marginTop: '2.875rem'}}>
-    {tweets.map((tweet) => (
-      <Tweet key={tweet.id} author_id={tweet.author_id} text={tweet.text} id={tweet.id} />
-    ))}
-  </div>
-);
+  return (
+    <div className="tweets-container" style={{marginTop: '2.875rem'}}>
+      {tweets.map((tweet: TweetProps) => (
+        <Tweet key={tweet.id} author_id={tweet.author_id} text={tweet.text} id={tweet.id} />
+      ))}
+    </div>
+  );
+};
 
 export default Tweets;

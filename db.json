@@ -37,6 +37,46 @@
       "author_id": "danielrfranco",
       "text": "example",
       "id": "tUj0pxM"
+    },
+    {
+      "author_id": "danielrfranco",
+      "text": "hello",
+      "id": "Hx15Iil"
+    },
+    {
+      "author_id": "",
+      "text": "Hello everybody",
+      "id": "cf2ilHf"
+    },
+    {
+      "author_id": "",
+      "text": "Hello everybody",
+      "id": "HVhSWBu"
+    },
+    {
+      "author_id": "danielrfranco",
+      "text": "test",
+      "id": "v3wLDur"
+    },
+    {
+      "author_id": "danielrfranco",
+      "text": "test",
+      "id": "f8H9xo7"
+    },
+    {
+      "author_id": "danielrfranco",
+      "text": "test",
+      "id": "pHqAoVt"
+    },
+    {
+      "author_id": "danielrfranco",
+      "text": "test",
+      "id": "FN4eUyf"
+    },
+    {
+      "author_id": "danielrfranco",
+      "text": "Another",
+      "id": "BX92FDa"
     }
   ],
   "users": [
@@ -66,6 +106,12 @@
       "password": "asdfasdf",
       "id": "jorge",
       "name": "Jorge Perez"
+    },
+    {
+      "email": "raul@raul.com",
+      "password": "asdfasdf",
+      "id": "Raul",
+      "name": "Raul Huerta"
     }
   ]
 }

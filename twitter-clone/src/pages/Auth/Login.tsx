@@ -17,7 +17,7 @@ import Button from '../../components/Button';
 import * as URLS from '../../constants/urls';
 import { USERS_API } from '../../constants/urls';
 
-import { set } from '../../redux/user';
+import { setUser } from '../../redux/user';
 
 const StyledForm = styled(Form)`
   display: flex;
@@ -58,7 +58,7 @@ const Login = () => {
                 .then((res) => {
                   console.log(res.status, res.statusText);
                   if (res.status === 200 && res.data?.id === values.username && res.data?.password === values.password) {
-                    dispatch(set({
+                    dispatch(setUser({
                       fullName: res.data.name,
                       userId: res.data.id,
                       loggedIn: true,
