@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import * as paths from "./Constants";
+import Home from "./pages/home/Home";
+import SignUp from "./pages/sign-up/SignUp";
+import Login from "./pages/login/Login";
+import HomeRedirectWrapper from "./util/HomeRedirectWrapper";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Some Tweeter Thing</h1>
+      <Routes>
+        <Route path={paths.homeUrl} element={<Home />} />
+        <Route
+          path={paths.loginUrl}
+          element={
+            <HomeRedirectWrapper>
+              <Login />
+            </HomeRedirectWrapper>
+          }
+        />
+        <Route
+          path={paths.signUpUrl}
+          element={
+            <HomeRedirectWrapper>
+              <SignUp />
+            </HomeRedirectWrapper>
+          }
+        />
+      </Routes>
     </div>
   );
 }
