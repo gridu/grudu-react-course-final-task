@@ -1,12 +1,51 @@
 {
-    "tweets": [
-        {"id": "1", "author_id": "johnsmith", "text": "What are the pros of object-oriented programming?<br><br>Please, explain as if I'm 5."},
-        {"id": "2", "author_id": "carlanotarobot", "text": "Why use a debugger when you can fill your code with hundreds of <code>print()</code> statements?"},
-        {"id": "3", "author_id": "ameliawarner", "text": "Describe your relationship with JavaScript with one word."}
-    ],
-    "users": [
-        {"id": "johnsmith", "name": "John Smith", "email": "johnsmith@gmail.com", "password": "12345"},
-        {"id": "carlanotarobot", "name": "Carla Notarobot", "email": "carlanotarobot@hotmail.com", "password": "123456"},
-        {"id": "ameliawarner", "name": "Amelia Warner", "email": "ameliawarner@yahoo.com", "password": "123457"}
-    ]
+  "tweets": [
+    {
+      "id": "1",
+      "author_id": "johnsmith",
+      "text": "What are the pros of object-oriented programming?<br><br>Please, explain as if I'm 5."
+    },
+    {
+      "id": "2",
+      "author_id": "carlanotarobot",
+      "text": "Why use a debugger when you can fill your code with hundreds of <code>print()</code> statements?"
+    },
+    {
+      "id": "3",
+      "author_id": "ameliawarner",
+      "text": "Describe your relationship with JavaScript with one word."
+    }
+  ],
+  "users": [
+    {
+      "id": "johnsmith",
+      "name": "John Smith",
+      "email": "johnsmith@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "carlanotarobot",
+      "name": "Carla Notarobot",
+      "email": "carlanotarobot@hotmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "ameliawarner",
+      "name": "Amelia Warner",
+      "email": "ameliawarner@yahoo.com",
+      "password": "123457"
+    },
+    {
+      "id": "testuser",
+      "name": "Test User",
+      "email": "some@email.com",
+      "password": "12345678"
+    },
+    {
+      "id": "testuser2",
+      "name": "Test User",
+      "email": "some@email.com",
+      "password": "12345679999"
+    }
+  ]
 }

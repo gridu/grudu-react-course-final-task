@@ -3,7 +3,7 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import { Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { usersUrl, homeUrl } from "../../Constants";
+import { usersRoute, homeUrl } from "../../Constants";
 import { setUser } from "../../redux/User";
 import { useNavigate } from "react-router-dom";
 
@@ -25,7 +25,7 @@ export default function Login() {
           console.info(values);
           actions.setSubmitting(true);
           axios
-            .get(usersUrl + "/" + values.username)
+            .get(usersRoute + "/" + values.username)
             .then((response) => {
               if (
                 response.status === 200 &&
