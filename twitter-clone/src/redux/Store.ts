@@ -11,5 +11,5 @@ export const store = configureStore({
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {users: User, tweets: Tweet[]}
+// Inferred type: {users: User, tweets: TweetContainer[]}
 export type AppDispatch = typeof store.dispatch;

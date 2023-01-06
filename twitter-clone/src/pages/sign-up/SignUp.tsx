@@ -1,16 +1,19 @@
 import React from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { Field, Form, Formik } from "formik";
+import { useFormik } from "formik";
 import * as Yup from "yup";
-import { homeUrl, usersRoute } from "../../Constants";
+import { homeUrl, loginUrl, usersRoute } from "../../Constants";
 import { setUser } from "../../redux/User";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as EmailValidator from "email-validator";
+import { Alert, Box, Container, Grid, Stack, TextField } from "@mui/material";
+import Button from "@mui/material/Button";
 
 export default function SignUp() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [userMessage, setUserMessage] = React.useState<string>("");
 
   const LoginSchema = Yup.object().shape({
     email: Yup.string()
@@ -28,58 +31,146 @@ export default function SignUp() {
       .required("Required"),
   });
 
+  const formik = useFormik({
+    initialValues: { email: "", password: "", username: "", fullName: "" },
+    validationSchema: LoginSchema,
+    onSubmit: (values, actions) => {
+      console.info(values);
+      actions.setSubmitting(true);
+      axios
+        .post(usersRoute, {
+          id: values.username,
+          name: values.fullName,
+          email: values.email,
+          password: values.password,
+        })
+        .then((response) => {
+          if (response.status === 201) {
+            dispatch(
+              setUser({
+                id: response.data.id,
+                name: response.data.name,
+                loggedIn: true,
+              })
+            );
+            navigate(homeUrl);
+          } else {
+            actions.setSubmitting(false);
+            setUserMessage("Something went wrong");
+          }
+        })
+        .catch((error) => {
+          actions.setSubmitting(false);
+          console.error(error);
+          setUserMessage("Something went wrong");
+        });
+    },
+  });
+
   return (
-    <div>
-      <h1>Sign up</h1>
-      <Formik
-        initialValues={{ email: "", password: "", username: "", fullName: "" }}
-        validationSchema={LoginSchema}
-        onSubmit={(values, actions) => {
-          console.info(values);
-          actions.setSubmitting(true);
-          axios
-            .post(usersRoute, {
-              id: values.username,
-              name: values.fullName,
-              email: values.email,
-              password: values.password,
-            })
-            .then((response) => {
-              if (response.status === 201) {
-                dispatch(
-                  setUser({
-                    id: response.data.id,
-                    loggedIn: true,
-                  })
-                );
-                actions.setSubmitting(false);
-                navigate(homeUrl);
-              } else {
-                actions.setSubmitting(false);
-              }
-            })
-            .catch((error) => {
-              actions.setSubmitting(false);
-              console.error(error);
-            });
+    <Container
+      sx={{
+        minHeight: "90vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+        flexDirection: "column",
+      }}
+    >
+      <Box
+        sx={{
+          boxSizing: "border-box",
+          padding: "10px",
+          position: "center",
+          width: "520px",
+          height: "auto",
+          background: "#FFFFFF",
+          border: "1px solid #42434B",
+          borderRadius: "8px",
+          boxShadow: 1,
         }}
       >
-        {({ errors, isSubmitting }) => (
-          <Form>
-            <Field type="text" name="email" placeholder="Email" />
-            {errors.email ? <div>{errors.email}</div> : null}
-            <Field type="password" name="password" placeholder="Password" />
-            {errors.password ? <div>{errors.password}</div> : null}
-            <Field type="text" name="username" placeholder="Username" />
-            {errors.username ? <div>{errors.username}</div> : null}
-            <Field type="text" name="fullName" placeholder="Full Name" />
-            {errors.fullName ? <div>{errors.fullName}</div> : null}
-            <button type="submit" disabled={isSubmitting}>
-              Sign up
-            </button>
-          </Form>
-        )}
-      </Formik>
-    </div>
+        <h1>Sign up</h1>
+        <Box component="form" onSubmit={formik.handleSubmit}>
+          <Stack spacing={1}>
+            <TextField
+              fullWidth
+              id="email"
+              name="email"
+              type="text"
+              margin="dense"
+              placeholder="Email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
+              helperText={formik.touched.email && formik.errors.email}
+            />
+            <TextField
+              id="password"
+              name="password"
+              type="password"
+              margin="dense"
+              placeholder="Password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              error={formik.touched.password && Boolean(formik.errors.password)}
+              helperText={formik.touched.password && formik.errors.password}
+            />
+            <TextField
+              fullWidth
+              id="username"
+              name="username"
+              type="text"
+              margin="dense"
+              placeholder="Username"
+              value={formik.values.username}
+              onChange={formik.handleChange}
+              error={formik.touched.username && Boolean(formik.errors.username)}
+              helperText={formik.touched.username && formik.errors.username}
+            />
+            <TextField
+              fullWidth
+              id="fullName"
+              name="fullName"
+              type="text"
+              margin="dense"
+              placeholder="Full Name"
+              value={formik.values.fullName}
+              onChange={formik.handleChange}
+              error={formik.touched.fullName && Boolean(formik.errors.fullName)}
+              helperText={formik.touched.fullName && formik.errors.fullName}
+            />
+            <Grid
+              container
+              spacing={2}
+              justifyContent="space-around"
+              alignItems="stretch"
+            >
+              <Grid item xs={8}>
+                {userMessage.length > 0 ? (
+                  <Alert severity="error" hidden={userMessage.length === 0}>
+                    {userMessage}
+                  </Alert>
+                ) : null}
+              </Grid>
+              <Grid item xs={4}>
+                <Button
+                  type="submit"
+                  disabled={formik.isSubmitting}
+                  variant="contained"
+                  color="primary"
+                >
+                  Sign up
+                </Button>
+              </Grid>
+            </Grid>
+          </Stack>
+        </Box>
+      </Box>
+      <Box sx={{ marginTop: "10px" }}>
+        Already have an account? <Link to={loginUrl}>Log in</Link>
+      </Box>
+    </Container>
   );
 }

@@ -5,11 +5,12 @@ import Home from "./pages/home/Home";
 import SignUp from "./pages/sign-up/SignUp";
 import Login from "./pages/login/Login";
 import HomeRedirectWrapper from "./util/HomeRedirectWrapper";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <div>
-      <h1>Some Tweeter Thing</h1>
+      <NavBar />
       <Routes>
         <Route path={paths.homeUrl} element={<Home />} />
         <Route
