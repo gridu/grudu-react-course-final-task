@@ -44,6 +44,21 @@
       "author_id": "johnsmith",
       "text": "Hello Again",
       "id": "ljOPlBU"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "And now, it <strong>WORKS<strong> and looks <i>beautiful<i></i></i></strong></strong>",
+      "id": "inR30Yh"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "And now, it <strong>WORKS</strong> and looks <i>beautiful</i>",
+      "id": "noUoN0w"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "And now with delay !",
+      "id": "moDhhAg"
     }
   ],
   "users": [
