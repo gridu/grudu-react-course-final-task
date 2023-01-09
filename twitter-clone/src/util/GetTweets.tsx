@@ -13,6 +13,6 @@ export default function GetTweets(userId: string = "") {
       dispatch(setTweets(response.data ?? []));
     })
     .catch((error) => {
-      console.log(error);
+      console.error(error);
     });
 }

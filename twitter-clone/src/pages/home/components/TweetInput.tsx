@@ -7,7 +7,8 @@ import { tweetsUrl } from "../../../Constants";
 import DOMPurify from "isomorphic-dompurify";
 import { setTweets } from "../../../redux/Tweets";
 import { User } from "../../../redux/User";
-import { Box, TextField } from "@mui/material";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 
@@ -39,7 +40,7 @@ export default function TweetInput() {
                 dispatch(setTweets(response.data ?? []));
               })
               .catch((error) => {
-                console.log(error);
+                console.error(error);
               });
           }
         })

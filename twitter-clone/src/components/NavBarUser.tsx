@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
-import { Menu, MenuItem } from "@mui/material";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 import { useDispatch } from "react-redux";
 
 export interface NavBarUserProps {

@@ -59,6 +59,16 @@
       "author_id": "johnsmith",
       "text": "And now with delay !",
       "id": "moDhhAg"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "One more before the road ! <strong>Hehe</strong>...",
+      "id": "1031KaY"
+    },
+    {
+      "author_id": "somenewuser123",
+      "text": "And a tweet from me!",
+      "id": "7aW7Zkx"
     }
   ],
   "users": [
@@ -103,6 +113,12 @@
       "name": "Test User Again",
       "email": "some@email.com",
       "password": "12345698877"
+    },
+    {
+      "id": "somenewuser123",
+      "name": "New User",
+      "email": "somenewemail@email.com",
+      "password": "8charachters"
     }
   ]
 }

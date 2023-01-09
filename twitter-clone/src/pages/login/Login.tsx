@@ -7,7 +7,12 @@ import { usersRoute, homeUrl, signUpUrl } from "../../Constants";
 import { setUser } from "../../redux/User";
 import { Link, useNavigate } from "react-router-dom";
 import Button from "@mui/material/Button";
-import { Alert, Box, Container, Grid, Stack, TextField } from "@mui/material";
+import Alert from "@mui/material/Alert";
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import Grid from "@mui/material/Grid";
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -15,15 +20,14 @@ export default function Login() {
   const [userMessage, setUserMessage] = React.useState<string>("");
 
   const LoginSchema = Yup.object().shape({
-    username: Yup.string().required("Required"),
-    password: Yup.string().required("Required"),
+    username: Yup.string().required("Username is required"),
+    password: Yup.string().required("Password is required"),
   });
 
   const formik = useFormik({
     initialValues: { username: "", password: "" },
     validationSchema: LoginSchema,
     onSubmit: (values, actions) => {
-      console.info(values);
       actions.setSubmitting(true);
       axios
         .get(usersRoute + "/" + values.username)

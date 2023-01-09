@@ -1,15 +1,11 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import GetTweets from "../../util/GetTweets";
 import TweetInput from "./components/TweetInput";
 import TweetsFeed from "./components/TweetsFeed";
-import { User } from "../../redux/User";
-import { Container } from "@mui/material";
+import Container from "@mui/material/Container";
 
 export default function Home() {
   GetTweets();
-  const user: User = useSelector((state: any) => state.user);
-  console.info(user);
 
   return (
     <Container

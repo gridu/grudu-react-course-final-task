@@ -1,7 +1,8 @@
 import React from "react";
 import { Tweet } from "../../../redux/Tweets";
 import Avatar from "react-avatar";
-import { Box, Grid } from "@mui/material";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import Stack from "@mui/material/Stack";
 
 export default function TweetContainer({ author_id, text }: Tweet) {
