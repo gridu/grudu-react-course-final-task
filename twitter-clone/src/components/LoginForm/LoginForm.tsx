@@ -27,6 +27,12 @@ const LoginForm: React.FC = () => {
           user: user
         })
       }
+      else {
+        setIsError404(true);
+        setTimeout(() => {
+          setIsError404(false);
+        }, 3000);
+      }
     }
     catch (error: any) {
       if (error.response.status === 404) {
