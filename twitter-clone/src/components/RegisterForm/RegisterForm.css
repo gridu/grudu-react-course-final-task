@@ -1,0 +1,52 @@
+.login-form-container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.register-input {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px grey;
+    border-radius: 10px;
+    width: 300px;
+    height: fit-content;
+    padding: 20px;
+}
+.register-input h2{
+    margin: 0 0 20px;
+    text-align: center;
+}
+.register-input input {
+    margin-top: 20px;
+    height: 20px;
+    padding: 5px;
+}
+
+input::placeholder {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+        'Helvetica Neue', sans-serif;
+    color: #b3b1b1;
+}
+.button-register {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.button-register button {
+    cursor: pointer;
+}
+
+.invalid-input {
+    color: red;
+    text-align: left;
+    font-size: 14px;
+    margin-bottom: -16px;
+
+}

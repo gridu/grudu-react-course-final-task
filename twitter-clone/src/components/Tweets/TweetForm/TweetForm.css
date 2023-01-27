@@ -1,0 +1,26 @@
+.tweet-input {
+    border: solid 1px grey;
+    border-radius: 10px;
+    width: 450px;
+    height: 100px;
+    padding: 10px;
+    line-height: 2em;
+}
+
+.tweet-input::placeholder {
+    line-height: 2em;
+}
+
+.button-tweet {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.button-tweet button {
+    cursor: pointer;
+}
+
+.invalid-input {
+    color: red;
+}
