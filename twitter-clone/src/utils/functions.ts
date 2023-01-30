@@ -1,3 +1,4 @@
+// TODO: naming convention for this file. should be more universal, like 'utils'
 import axios from "axios";
 
 export const getUser = async (authorId: string) => {
@@ -10,6 +11,6 @@ export const getUser = async (authorId: string) => {
   }
 };
 
-export const getInitials = (name: string) => {
+export const getInitials = (name: string) => { //TODO: can use generic type here to make it more universal https://www.typescriptlang.org/docs/handbook/2/generics.html
   return (name as string).split(" ").map((n)=>n[0]).join("");
 } 

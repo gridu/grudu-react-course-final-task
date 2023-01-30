@@ -9,10 +9,10 @@ interface SingleTweetProps {
 };
 
 const SingleTweet: React.FC<SingleTweetProps> = ({ tweet }) => {
-    const [userInfo, setUserInfo] = useState({});
+    const [userInfo, setUserInfo] = useState({}); // TODO: should use useRecoilState here?
 
     useEffect(() => {
-        getUser(tweet.author_id).then(res => {
+        getUser(tweet.author_id).then(res => { // TODO: inappropiate use of promise chaining. We don't have a promise here
             setUserInfo(res)
         }).catch(error => {
             console.log(error);

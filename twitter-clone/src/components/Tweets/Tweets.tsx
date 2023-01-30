@@ -12,10 +12,10 @@ const Tweets: React.FC = () => {
     const [tweets, setTweets] = useRecoilState(tweetsList);
     const [shouldRefresh, setShouldRefresh] = useRecoilState(refresh);
     const { user } = useRecoilValue(userAuth);
-    const [initials, setInitials] = useState('');
+    const [initials, setInitials] = useState(''); // TODO:
     const [isError, setIsError] = useState(false);
 
-    const getAllTweets = async () => {
+    const getAllTweets = async () => { // TODO: could be wrapped in useCallback
         try {
             const result = await axios.get('http://localhost:3001/tweets');
             setTweets(result.data);

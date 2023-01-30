@@ -1,3 +1,4 @@
+// TODO: order of imports. absolute imports first, then relative imports
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import './LoginForm.css';
@@ -12,12 +13,13 @@ import { useRecoilState } from 'recoil';
 
 
 const LoginForm: React.FC = () => {
+  // TODO: format this file to follow the same style as the rest of the project
   const { register, handleSubmit, formState: { errors } } = useForm<User>({ criteriaMode: "all" });
-  const [auth, setAuth] = useRecoilState(userAuth)
+  const [auth, setAuth] = useRecoilState(userAuth) // TODO: auth state could be moved into a custom hook
   const [isError, setIsError] = useState(false);
-  const [isError404, setIsError404] = useState(false);
+  const [isError404, setIsError404] = useState(false); // TODO: redundant, 404 could be handled in the same way as other errors
 
-  async function checkAuth(id: string, password: string) {
+  async function checkAuth(id: string, password: string) {  // TODO: this logic should be moved out of this component
     try {
       const res = await axios.get('http://localhost:3001/users/' + id);
       const user = res.data;
@@ -37,7 +39,7 @@ const LoginForm: React.FC = () => {
     catch (error: any) {
       if (error.response.status === 404) {
         setIsError404(true);
-        setTimeout(() => {
+        setTimeout(() => { // TODO: not clear why we need these timesouts
           setIsError404(false);
         }, 3000);
       }
@@ -82,7 +84,7 @@ const LoginForm: React.FC = () => {
               : null;
           }}
         />
-        <input
+        <input // TODO: add validation for fields (as in RegisterForm)
           type='password'
           {...register("password", { required: 'This is required' })}
           placeholder='Password'

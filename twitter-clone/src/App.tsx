@@ -11,7 +11,7 @@ import { userAuth } from './recoil/atom';
 function App() {
   const { isAuthenticated } = useRecoilValue(userAuth);
   return (
-    <Routes>
+    <Routes> // TODO: routes can be nested, https://reactrouter.com/en/main/components/routes
       <Route
         path="/"
         element={<LoginForm />}
