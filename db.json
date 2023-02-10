@@ -1,12 +1,124 @@
 {
-    "tweets": [
-        {"id": "1", "author_id": "johnsmith", "text": "What are the pros of object-oriented programming?<br><br>Please, explain as if I'm 5."},
-        {"id": "2", "author_id": "carlanotarobot", "text": "Why use a debugger when you can fill your code with hundreds of <code>print()</code> statements?"},
-        {"id": "3", "author_id": "ameliawarner", "text": "Describe your relationship with JavaScript with one word."}
-    ],
-    "users": [
-        {"id": "johnsmith", "name": "John Smith", "email": "johnsmith@gmail.com"},
-        {"id": "carlanotarobot", "name": "Carla Notarobot", "email": "carlanotarobot@hotmail.com"},
-        {"id": "ameliawarner", "name": "Amelia Warner", "email": "ameliawarner@yahoo.com"}
-    ]
+  "tweets": [
+    {
+      "id": "1",
+      "author_id": "johnsmith",
+      "text": "What are the pros of object-oriented programming?<br><br>Please, explain as if I'm 5."
+    },
+    {
+      "id": "2",
+      "author_id": "carlanotarobot",
+      "text": "Why use a debugger when you can fill your code with hundreds of <code>print()</code> statements?"
+    },
+    {
+      "id": "3",
+      "author_id": "ameliawarner",
+      "text": "Describe your relationship with JavaScript with one word."
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "Hello ? <strong>LOL</strong>",
+      "id": "vy_966q"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "Hello...",
+      "id": "O1hoOgS"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "<strong>Well maybe now it works<strong></strong></strong>",
+      "id": "Z_VEYET"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "ok",
+      "id": "-8J5jWJ"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "Hi !",
+      "id": "7f7usjI"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "Hello Again",
+      "id": "ljOPlBU"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "And now, it <strong>WORKS<strong> and looks <i>beautiful<i></i></i></strong></strong>",
+      "id": "inR30Yh"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "And now, it <strong>WORKS</strong> and looks <i>beautiful</i>",
+      "id": "noUoN0w"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "And now with delay !",
+      "id": "moDhhAg"
+    },
+    {
+      "author_id": "johnsmith",
+      "text": "One more before the road ! <strong>Hehe</strong>...",
+      "id": "1031KaY"
+    },
+    {
+      "author_id": "somenewuser123",
+      "text": "And a tweet from me!",
+      "id": "7aW7Zkx"
+    }
+  ],
+  "users": [
+    {
+      "id": "johnsmith",
+      "name": "John Smith",
+      "email": "johnsmith@gmail.com",
+      "password": "12345"
+    },
+    {
+      "id": "carlanotarobot",
+      "name": "Carla Notarobot",
+      "email": "carlanotarobot@hotmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "ameliawarner",
+      "name": "Amelia Warner",
+      "email": "ameliawarner@yahoo.com",
+      "password": "123457"
+    },
+    {
+      "id": "testuser",
+      "name": "Test User",
+      "email": "some@email.com",
+      "password": "12345678"
+    },
+    {
+      "id": "testuser2",
+      "name": "Test User",
+      "email": "some@email.com",
+      "password": "12345679999"
+    },
+    {
+      "id": "testUserSome",
+      "name": "Test User Some",
+      "email": "some@email.com",
+      "password": "1234567899999999"
+    },
+    {
+      "id": "testuser1234567",
+      "name": "Test User Again",
+      "email": "some@email.com",
+      "password": "12345698877"
+    },
+    {
+      "id": "somenewuser123",
+      "name": "New User",
+      "email": "somenewemail@email.com",
+      "password": "8charachters"
+    }
+  ]
 }
