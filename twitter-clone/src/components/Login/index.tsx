@@ -1,6 +1,8 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
 
+// useNavigate may be used
+
 const Login = () => {
   return (
     <Card sx={{ maxWidth: 345 }} variant="outlined">
